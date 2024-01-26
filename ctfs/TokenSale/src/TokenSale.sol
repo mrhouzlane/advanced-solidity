@@ -16,19 +16,19 @@ contract TokenSale {
     function buy(uint256 numTokens) public payable returns (uint256) {
         uint256 total = 0;
         unchecked {
-            total += numTokens * PRICE_PER_TOKEN;
+            total += numTokens * PRICE_PER_TOKEN; 
         }
-        require(msg.value == total);
+        require(msg.value == total); // overflow here 
 
-        balanceOf[msg.sender] += numTokens;
+        balanceOf[msg.sender] += numTokens; // overflow 
         return (total);
     }
 
     function sell(uint256 numTokens) public {
-        require(balanceOf[msg.sender] >= numTokens);
+        require(balanceOf[msg.sender] >= numTokens); 
 
-        balanceOf[msg.sender] -= numTokens;
-        (bool ok, ) = msg.sender.call{value: (numTokens * PRICE_PER_TOKEN)}("");
+        balanceOf[msg.sender] -= numTokens; // underflow 
+        (bool ok, ) = msg.sender.call{value: (numTokens * PRICE_PER_TOKEN)}(""); // overflow 
         require(ok, "Transfer to msg.sender failed");
     }
 }
