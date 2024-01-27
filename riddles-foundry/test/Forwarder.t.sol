@@ -8,7 +8,6 @@ contract ForwarderTest is Test {
     Wallet public wallet;
     Forwarder public forwarderContract;
 
-
     function setUp() public {
         forwarderContract = new Forwarder();
         vm.prank(address(forwarderContract));
@@ -24,5 +23,4 @@ contract ForwarderTest is Test {
     }
 
     receive() external payable {}
-
 }

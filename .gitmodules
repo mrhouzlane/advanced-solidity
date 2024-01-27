@@ -7,3 +7,6 @@
 [submodule "damn-vulnerable-defi/lib/openzeppelin-contracts"]
 	path = damn-vulnerable-defi/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "riddles-foundry/lib/openzeppelin-contracts"]
+	path = riddles-foundry/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
