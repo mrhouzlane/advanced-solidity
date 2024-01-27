@@ -1,9 +1,9 @@
-## Advanced Solidity 
+# Advanced Solidity 
 
 
-## Riddles 
+### Riddles 
 - Solved with Foundry 
-## CTFS 
+### CTFS 
 - Capture The Ether
-## Live 
+### Live 
 - Contracts to improve 
