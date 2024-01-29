@@ -46,11 +46,6 @@ contract Governance {
      * @param viceroy: the address who will be able to appoint voters
      * @param id: the NFT of the oligarch
      */
-
-    //  The ! operator is the logical NOT operator in Solidity.
-    // It inverts the boolean value. So, !idUsed[id] is true if idUsed[id] is false,
-    // and vice versa.
-
     function appointViceroy(address viceroy, uint256 id) external {
         require(oligargyNFT.ownerOf(id) == msg.sender, "not an oligarch");
         require(!idUsed[id], "already appointed a viceroy");

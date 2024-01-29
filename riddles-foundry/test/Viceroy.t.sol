@@ -34,5 +34,25 @@ contract ViceroyTest is Test {
         vm.startPrank(randomAddress);
         vm.expectRevert("CALLER_NOT_OWNER_OF_NFT");
         governance.deposeViceroy(_viceroy, 1);
+        vm.stopPrank();
+    }
+
+    function testFail_DeposeViceroyNotAppointedBy() public {
+        vm.startPrank(attacker); // isOwner of NFT
+        vm.expectRevert("NOT_APPOINTED_BY");
+        governance.deposeViceroy(_viceroy, 1);
+        vm.stopPrank();
+    }
+
+    function testAppointerCanDepose() public {
+        vm.startPrank(attacker); 
+        governance.appointViceroy(_viceroy, 1);
+        governance.deposeViceroy(_viceroy, 1);
+        bool isViceroyAppointed = governance.idUsed(1);
+        assertEq(isViceroyAppointed, false);
+        (uint256 appointedBy, uint256 numAppointments) = governance.viceroys(_viceroy);
+        assertEq(appointedBy, 0);
+        assertEq(numAppointments, 0);
+        vm.stopPrank();
     }
 }
