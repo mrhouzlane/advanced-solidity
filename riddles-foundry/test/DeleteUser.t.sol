@@ -29,20 +29,19 @@ contract DeleteUserTest is Test {
         vm.prank(player);
         deleteUser.deposit{value: 1 ether}();
         User memory user1 = User(player, 1 ether);
-        // TO DO assertion equality 
+        // TO DO assertion equality
     }
 
     function drainContract() public {
         vm.startPrank(player);
         deleteUser.deposit{value: 1 ether}();
-        deleteUser.deposit{value : 0 ether}();
+        deleteUser.deposit{value: 0 ether}();
 
-        // Withdraw with index(0) 2 times 
+        // Withdraw with index(0) 2 times
         deleteUser.withdraw(0); // removes User that deposited 0 ether (last item in array)
         deleteUser.withdraw(0); // removes User that deposited 1 ether (last item in array)
 
         assertEq(address(deleteUser).balance, 0);
         assertEq(player.balance, 2 ether);
-
     }
 }
