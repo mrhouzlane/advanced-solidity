@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract GatekeeperOne {
     using SafeMath for uint256;
+
     address public entrant;
 
     modifier gateOne() {
