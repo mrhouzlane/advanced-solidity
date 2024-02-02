@@ -1,5 +1,18 @@
 # huff-puzzles by [RareSkills](https://www.rareskills.io)
 
+
+## Notes 
+
+- Changes to stack 
+- Bytecode types (creation code and runtime code)
+- Low level deployment of a contract (Execution of opcodes without functions signatures)
+- Txs to address(0) 
+- Calldata Execution 
+
+
+
+
+
 A series of puzzles that go from very easy to more difficult so that you can have a hands-on introduction to the [huff language](https://huff.sh) and learn EVM bytecode while doing it.
 
 ## Pre-requisites

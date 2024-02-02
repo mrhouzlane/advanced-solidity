@@ -16,3 +16,9 @@
 [submodule "ethernaut/lib/forge-std"]
 	path = ethernaut/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "huff/lib/foundry-huff"]
+	path = huff/lib/foundry-huff
+	url = https://github.com/huff-language/foundry-huff
+[submodule "huff/lib/forge-std"]
+	path = huff/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

@@ -9,9 +9,25 @@
  *  NOTICE: The contract should revert when an unrecognized function is called
  */
 
+
 #define function add1(uint256) payable returns(uint256)
+#define revert REVERT(0, 0)
+
+
+// Constants for function selectors
+#define constant ADD1_SELECTOR = takes(0) returns(0) {
+   __FUNC_SIG
+}
 
 
 #define macro MAIN() = takes(0) returns(0) {
+    // Get the function selector 
+    0x00 
+    calldataload 
+    0xE0
+    shr 
+
+    0x00 calldataload
+    PUSH1 0x00
 
 }
