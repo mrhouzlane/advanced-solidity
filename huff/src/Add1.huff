@@ -29,5 +29,4 @@
 
     0x00 calldataload
     PUSH1 0x00
-
 }

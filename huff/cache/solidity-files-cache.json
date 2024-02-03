@@ -1022,6 +1022,47 @@
         }
       }
     },
+    "src/SimpleStore.sol": {
+      "lastModificationDate": 1706969611002,
+      "contentHash": "1fe3737f82c1b1be5cc8b3203d49d760",
+      "sourceName": "src/SimpleStore.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "useLiteralContent": false,
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "shanghai",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "SimpleStore": {
+          "0.8.21+commit.d9974bed.Darwin.appleclang": "SimpleStore.sol/SimpleStore.json"
+        }
+      }
+    },
     "test/Add1.t.sol": {
       "lastModificationDate": 1706616010362,
       "contentHash": "8c96d55795b11798b9a735c2b3ffaafb",

@@ -13,5 +13,10 @@
 
 
  #define macro MAIN() = takes(0) returns(0) {
-    
+
+    0x15      //    [0x15]
+    0x20      //    [size, 0x15]
+    0x00      //    [0x00, size, 0x15]
+    callvalue //    [callvalue, 0x00, size, 0x15]
+    create2   //    [address]
  }
