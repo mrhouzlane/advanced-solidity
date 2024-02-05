@@ -17,12 +17,12 @@ contract TrusterLenderPoolTest is Test {
     function setUp() public {
         vm.startPrank(owner);
         erc20Mock = new ERC20Mock();
-        // Add liquidity to the pool 
+        // Add liquidity to the pool
         trusterLenderPool = new TrusterLenderPool(address(erc20Mock));
-        // Fund the trusterLenderPool with 1000 tokens 
+        // Fund the trusterLenderPool with 1000 tokens
         erc20Mock.mint(address(trusterLenderPool), 1000);
         assertEq(erc20Mock.balanceOf(address(trusterLenderPool)), 1000);
-        // Deploy Attacker contract 
+        // Deploy Attacker contract
         vm.prank(attacker);
         trusterAttacker = new TrusterAttacker(address(trusterLenderPool));
     }
