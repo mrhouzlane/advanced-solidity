@@ -21,7 +21,7 @@ contract AlienCodex is Ownable {
     }
 
     function retract() public contacted {
-        // codex.length  TO DO to be compatible with solidity 0.8.12
+        codex.pop();
     }
 
     function revise(uint256 i, bytes32 _content) public contacted {

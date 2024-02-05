@@ -44,23 +44,23 @@
     0x00                // [0]       
     calldataload        // [32 bytes of calldata from 0x00]
     0xE0                // [224 bits, calldata]
-    shr                 //  calldataload is shifted right by 0xEO
+    shr                 //  calldataload is shifted right by 0xEO => [sig]
 
-    dup1 
+    dup1                // [msg.sig, msg.sig]
     // 0x6057361d
-    __FUNC_SIG(store)   // push4 0x6057361d 
-    eq                  // [0x6057361d == sig, sig] 
+    __FUNC_SIG(store)   // push4 0x6057361d  => [0x6057361d == sig, sig]
+    eq                  // [0x6057361d == sig, sig]  
     set                 // [set pc, 0x6057361d == sig, sig]
     jumpi               // [sig]
 
-    dup1 __FUNC_SIG(read) 
+    __FUNC_SIG(read)    // 
     eq 
     get 
     jumpi
 
 
     // REVERT
-    0x00 0x00 revert    // Protects against usnig functions that are not store or read
+    0x00 0x00 revert    // Protects against using functions that are not store or read
 
     set: 
         STORE()

@@ -14,7 +14,6 @@ contract DemocracyTest is Test {
     address helper2 = vm.addr(0x4);
 
     function setUp() public {
-        // owner = incumbent
         vm.prank(initialOwner);
         democracy = new Democracy();
     }
@@ -29,6 +28,11 @@ contract DemocracyTest is Test {
         // Check Balance of each address
         assertEq(democracy.balanceOf(challenger1), 2); // tokens 0 and 1
         assertEq(democracy.balanceOf(initialOwner), 0);
+        // Check votes of each address
+        (uint256 challengerVotes) = democracy.votes(challenger1);
+        assertEq(challengerVotes, 3);
+        (uint256 incumbentVotes) = democracy.votes(initialOwner);
+        assertEq(incumbentVotes, 5);
     }
 
     function testAttack() public {

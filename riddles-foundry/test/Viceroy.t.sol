@@ -45,14 +45,18 @@ contract ViceroyTest is Test {
     }
 
     function testAppointerCanDepose() public {
-        vm.startPrank(attacker); 
+        vm.startPrank(attacker);
         governance.appointViceroy(_viceroy, 1);
         governance.deposeViceroy(_viceroy, 1);
         bool isViceroyAppointed = governance.idUsed(1);
         assertEq(isViceroyAppointed, false);
         (uint256 appointedBy, uint256 numAppointments) = governance.viceroys(_viceroy);
-        assertEq(appointedBy, 0);
-        assertEq(numAppointments, 0);
+        assertEq(appointedBy, 0); // reset Struct values to default values
+        assertEq(numAppointments, 0); // reset Struct values to default values
         vm.stopPrank();
+    }
+
+    function testApproveVoter() public {
+        vm.startPrank(attacker);
     }
 }
