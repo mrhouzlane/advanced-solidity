@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.21;
 
 import "solmate/src/utils/FixedPointMathLib.sol";
 import "solmate/src/utils/ReentrancyGuard.sol";
@@ -11,12 +11,7 @@ import {IERC3156FlashBorrower, IERC3156FlashLender} from "@openzeppelin/contract
  * @title UnstoppableVault
  * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
  */
-contract UnstoppableVault is
-    IERC3156FlashLender,
-    ReentrancyGuard,
-    Owned,
-    ERC4626
-{
+contract UnstoppableVault is IERC3156FlashLender, ReentrancyGuard, Owned, ERC4626 {
     using SafeTransferLib for ERC20;
     using FixedPointMathLib for uint256;
 
@@ -34,11 +29,10 @@ contract UnstoppableVault is
 
     event FeeRecipientUpdated(address indexed newFeeRecipient);
 
-    constructor(
-        ERC20 _token,
-        address _owner,
-        address _feeRecipient
-    ) ERC4626(_token, "Oh Damn Valuable Token", "oDVT") Owned(_owner) {
+    constructor(ERC20 _token, address _owner, address _feeRecipient)
+        ERC4626(_token, "Oh Damn Valuable Token", "oDVT")
+        Owned(_owner)
+    {
         feeRecipient = _feeRecipient;
         emit FeeRecipientUpdated(_feeRecipient);
     }
@@ -55,10 +49,7 @@ contract UnstoppableVault is
     /**
      * @inheritdoc IERC3156FlashLender
      */
-    function flashFee(
-        address _token,
-        uint256 _amount
-    ) public view returns (uint256 fee) {
+    function flashFee(address _token, uint256 _amount) public view returns (uint256 fee) {
         if (address(asset) != _token) revert UnsupportedCurrency();
 
         if (block.timestamp < end && _amount < maxFlashLoan(_token)) {
@@ -91,36 +82,27 @@ contract UnstoppableVault is
     /**
      * @inheritdoc IERC3156FlashLender
      */
-    function flashLoan(
-        IERC3156FlashBorrower receiver,
-        address _token,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool) {
+
+    function flashLoan(IERC3156FlashBorrower receiver, address _token, uint256 amount, bytes calldata data)
+        external
+        returns (bool)
+    {
         if (amount == 0) revert InvalidAmount(0); // fail early
         if (address(asset) != _token) revert UnsupportedCurrency(); // enforce ERC3156 requirement
         uint256 balanceBefore = totalAssets();
-        if (convertToShares(totalSupply) != balanceBefore)
-            revert InvalidBalance(); // enforce ERC4626 requirement
+        if (convertToShares(totalSupply) != balanceBefore) {
+            revert InvalidBalance();
+        } // enforce ERC4626 requirement
         uint256 fee = flashFee(_token, amount);
         // transfer tokens out + execute callback on receiver
         ERC20(_token).safeTransfer(address(receiver), amount);
         // callback must return magic value, otherwise assume it failed
         if (
-            receiver.onFlashLoan(
-                msg.sender,
-                address(asset),
-                amount,
-                fee,
-                data
-            ) != keccak256("IERC3156FlashBorrower.onFlashLoan")
+            receiver.onFlashLoan(msg.sender, address(asset), amount, fee, data)
+                != keccak256("IERC3156FlashBorrower.onFlashLoan")
         ) revert CallbackFailed();
         // pull amount + fee from receiver, then pay the fee to the recipient
-        ERC20(_token).safeTransferFrom(
-            address(receiver),
-            address(this),
-            amount + fee
-        );
+        ERC20(_token).safeTransferFrom(address(receiver), address(this), amount + fee);
         ERC20(_token).safeTransfer(feeRecipient, fee);
         return true;
     }
@@ -128,16 +110,10 @@ contract UnstoppableVault is
     /**
      * @inheritdoc ERC4626
      */
-    function beforeWithdraw(
-        uint256 assets,
-        uint256 shares
-    ) internal override nonReentrant {}
+    function beforeWithdraw(uint256 assets, uint256 shares) internal override nonReentrant {}
 
     /**
      * @inheritdoc ERC4626
      */
-    function afterDeposit(
-        uint256 assets,
-        uint256 shares
-    ) internal override nonReentrant {}
+    function afterDeposit(uint256 assets, uint256 shares) internal override nonReentrant {}
 }
