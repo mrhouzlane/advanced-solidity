@@ -25,6 +25,7 @@ contract TokenWhale {
     }
 
     function _transfer(address to, uint256 value) internal {
+        //@audit - unchecked here is not with bounds so transfer can lead to an overflow/underflow
         unchecked {
             balanceOf[msg.sender] -= value;
             balanceOf[to] += value;
@@ -40,11 +41,7 @@ contract TokenWhale {
         _transfer(to, value);
     }
 
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 
     function approve(address spender, uint256 value) public {
         allowance[msg.sender][spender] = value;
@@ -69,5 +66,4 @@ contract ExploitContract {
         tokenWhale = _tokenWhale;
     }
 
-    // write your exploit functions below
 }

