@@ -35,7 +35,12 @@ contract TokenWhaleTest is Test {
         // Overflowing the player's address (499 < 501)
         // request of 501 tokens transfer 
         vm.prank(address(this));
+        //@audit - This will call _transfer() which will : 
+        // removes 501 tokens from address(this) balance but : 
+        // address(this).balance = 499 tokens <= 501 tokens requested 
+        // = UNDERFLOW 
         tokenWhale.transferFrom(Alice, Alice, 501);
+        
         // Alice has 1002 tokens
         console.log(tokenWhale.balanceOf(Alice));
         console.log(tokenWhale.balanceOf(address(this)));
