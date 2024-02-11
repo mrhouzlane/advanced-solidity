@@ -32,7 +32,7 @@ contract TokenWhaleTest is Test {
         // Approval 
         vm.prank(Alice);
         tokenWhale.approve(address(this), 1000);
-        // Overflowing the player's address (499 < 501)
+        // UNDERFLOWING the player's address (499 < 501)
         // request of 501 tokens transfer 
         vm.prank(address(this));
         //@audit - This will call _transfer() which will : 
