@@ -8,5 +8,9 @@
  */
 
 #define macro MAIN() = takes(0) returns(0) {
-   
+    caller                  // [msg.sender]
+    balance                 // [balance, msg.sender] => [balance]
+    0x00 mstore             // [0x00, balance] => []  @note this writes balance in 0x00
+    0x20 0x00 return        // [0x00, 0x20] => []  @note this returns the 0x00 with the balance 
 }
+
