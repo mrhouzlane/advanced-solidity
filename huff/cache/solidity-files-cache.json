@@ -1022,6 +1022,47 @@
         }
       }
     },
+    "src/Multiply.sol": {
+      "lastModificationDate": 1707803907851,
+      "contentHash": "996ed07ecdc80cdf56bd79dc02a08210",
+      "sourceName": "src/Multiply.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "useLiteralContent": false,
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "shanghai",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Multiply": {
+          "0.8.21+commit.d9974bed.Darwin.appleclang": "Multiply.sol/Multiply.json"
+        }
+      }
+    },
     "src/SimpleStore.sol": {
       "lastModificationDate": 1706969611002,
       "contentHash": "1fe3737f82c1b1be5cc8b3203d49d760",

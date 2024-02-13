@@ -11,7 +11,55 @@
 
 #define function multiply(uint256, uint256) payable returns(uint256)
 
+#define macro MULTIPLY() = takes (0) returns (0) {
 
+
+    // ----------------  [LOADING first argument a ] --------------------- // 
+    // Load the first argument (offset by 4 bytes for the function selector)
+    0x04 calldataload     // [a] 
+    // if a is zero, return 0
+    dup1                    // [a, a]
+    returndatasize          // [size of a (0 or > 0), a]    //@note : pushes size of last return data to the stack 
+    eq ret jumpi            //  //@audit - check for a == 0 is here to prevent runtime executions 
+
+
+
+    // ----------------  [LOADING second argument b ] --------------------- //
+    // Load the second argument (offset by 0x24 bytes, after the first argument)
+    0x24 calldataload     // [b, a]
+    dup1                  // [b, b, a]
+    dup3                  // [a, b, b, a]
+    mul                   // [a*b, b, a]
+    dup3                  // [a, a*b, b, a]
+    dup2                  // [a*b, a, a*b, b, a]
+    div                   // [a*b / a, a*b, b, a]     //@note : division ((a*b) / a) is a check for overflow 
+                                                      //@note : if a*b exceeds 2^256, the result of the division will be different from b
+                
+    dup3                  // [b, a*b / a, a*b, b, a]
+    eq ret jumpi          // if a*b / a != b, revert
+    
+    invalid                 
+
+    ret:
+    returndatasize 
+    mstore 
+    0x20 
+    returndatasize 
+    return 
+}
+
+
+// Main entry point
 #define macro MAIN() = takes(0) returns(0) {
 
+    returndatasize          // [size of last return data]
+    calldataload            // [data[size of last return data]]
+    0xE0 shr                // 
+    __FUNC_SIG(multiply) eq multiply jumpi 
+
+    //if function doesn't match, revert 
+    invalid 
+
+    multiply: 
+        MULTIPLY()
 }

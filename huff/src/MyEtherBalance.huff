@@ -13,4 +13,3 @@
     0x00 mstore             // [0x00, balance] => []  @note this writes balance in 0x00
     0x20 0x00 return        // [0x00, 0x20] => []  @note this returns the 0x00 with the balance 
 }
-
