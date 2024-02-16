@@ -1,0 +1,21 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "test/Attacker.t.sol",
+    "id": 46577,
+    "exportedSymbols": {},
+    "nodeType": "SourceUnit",
+    "src": "988:0:46",
+    "nodes": [],
+    "license": "UNLICENSED"
+  },
+  "id": 46
+}

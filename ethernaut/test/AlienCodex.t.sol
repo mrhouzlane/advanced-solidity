@@ -14,6 +14,5 @@ contract AlienCodexTest is Test {
     function testUnderflow() public {
         alienCodex.make_contact();
         alienCodex.retract();
-       
     }
 }

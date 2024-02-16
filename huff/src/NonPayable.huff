@@ -10,4 +10,12 @@
 
 #define macro MAIN() = takes(0) returns(0) {
 
+    // ether send with transaction    
+    callvalue       // [value in wei]
+    iszero          // [1] if value is 0, [0] otherwise 
+    unpaid jumpi    // [upaid (result), ]
+    0x00
+    dup1 
+    revert 
+    unpaid: 
 }
