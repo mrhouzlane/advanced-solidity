@@ -28,3 +28,6 @@
 [submodule "yul-assembly/lib/forge-std"]
 	path = yul-assembly/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "yul-assembly/lib/solmate"]
+	path = yul-assembly/lib/solmate
+	url = https://github.com/transmissions11/solmate
