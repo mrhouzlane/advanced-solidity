@@ -1,0 +1,374 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "WithdrawalsAreDisabled",
+      "type": "error"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WithdrawalsAreDisabled\",\"type\":\"error\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/Puffer.sol\":\"IPuffer\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":@openzeppelin/=lib/openzeppelin-contracts/\",\":@prb/math/=lib/prb-math/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc1363-payable-token/=lib/erc1363-payable-token/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":prb-math/=lib/prb-math/src/\",\":prb-test/=lib/prb-math/lib/prb-test/src/\",\"lib/openzeppelin-contracts:@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\"lib/prb-math:@prb/test/=lib/prb-math/lib/prb-test/src/\"]},\"sources\":{\"src/Puffer.sol\":{\"keccak256\":\"0x58b4de9cf721a4be7b773626ab725161413203981a1401dd0ef97a848fdfdd1f\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://bf074de16b73d0c065875c006ed2c1a2177114d54936da6990419b1f88ad3ad6\",\"dweb:/ipfs/QmV2PaCkSuXiXTXRxHiffTCU88n2uJzxUr9EQjFEEYT9br\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "WithdrawalsAreDisabled"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@openzeppelin/=lib/openzeppelin-contracts/",
+        "@prb/math/=lib/prb-math/src/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "erc1363-payable-token/=lib/erc1363-payable-token/",
+        "erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        "forge-std/=lib/forge-std/src/",
+        "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        "prb-math/=lib/prb-math/src/",
+        "prb-test/=lib/prb-math/lib/prb-test/src/",
+        "lib/openzeppelin-contracts:@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        "lib/prb-math:@prb/test/=lib/prb-math/lib/prb-test/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/Puffer.sol": "IPuffer"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/Puffer.sol": {
+        "keccak256": "0x58b4de9cf721a4be7b773626ab725161413203981a1401dd0ef97a848fdfdd1f",
+        "urls": [
+          "bzz-raw://bf074de16b73d0c065875c006ed2c1a2177114d54936da6990419b1f88ad3ad6",
+          "dweb:/ipfs/QmV2PaCkSuXiXTXRxHiffTCU88n2uJzxUr9EQjFEEYT9br"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/Puffer.sol",
+    "id": 43372,
+    "exportedSymbols": {
+      "IPuffer": [
+        43353
+      ],
+      "Puffer": [
+        43371
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:278:18",
+    "nodes": [
+      {
+        "id": 43350,
+        "nodeType": "PragmaDirective",
+        "src": "39:23:18",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".20"
+        ]
+      },
+      {
+        "id": 43353,
+        "nodeType": "ContractDefinition",
+        "src": "64:57:18",
+        "nodes": [
+          {
+            "id": 43352,
+            "nodeType": "ErrorDefinition",
+            "src": "88:31:18",
+            "nodes": [],
+            "errorSelector": "521d7dd6",
+            "name": "WithdrawalsAreDisabled",
+            "nameLocation": "94:22:18",
+            "parameters": {
+              "id": 43351,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "116:2:18"
+            }
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPuffer",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          43353
+        ],
+        "name": "IPuffer",
+        "nameLocation": "74:7:18",
+        "scope": 43372,
+        "usedErrors": [
+          43352
+        ],
+        "usedEvents": []
+      },
+      {
+        "id": 43371,
+        "nodeType": "ContractDefinition",
+        "src": "123:193:18",
+        "nodes": [
+          {
+            "id": 43370,
+            "nodeType": "FunctionDefinition",
+            "src": "156:154:18",
+            "nodes": [],
+            "body": {
+              "id": 43369,
+              "nodeType": "Block",
+              "src": "232:78:18",
+              "nodes": [],
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 43366,
+                      "name": "WithdrawalsAreDisabled",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 43352,
+                      "src": "279:22:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                        "typeString": "function () pure"
+                      }
+                    },
+                    "id": 43367,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "279:24:18",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 43368,
+                  "nodeType": "RevertStatement",
+                  "src": "272:31:18"
+                }
+              ]
+            },
+            "functionSelector": "ba087652",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "redeem",
+            "nameLocation": "165:6:18",
+            "parameters": {
+              "id": 43362,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43357,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43370,
+                  "src": "172:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 43356,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "172:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43359,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43370,
+                  "src": "181:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 43358,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 43361,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43370,
+                  "src": "190:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 43360,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "190:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "171:27:18"
+            },
+            "returnParameters": {
+              "id": 43365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43364,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 43370,
+                  "src": "223:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 43363,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "223:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "222:9:18"
+            },
+            "scope": 43371,
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 43354,
+              "name": "IPuffer",
+              "nameLocations": [
+                "142:7:18"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 43353,
+              "src": "142:7:18"
+            },
+            "id": 43355,
+            "nodeType": "InheritanceSpecifier",
+            "src": "142:7:18"
+          }
+        ],
+        "canonicalName": "Puffer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          43371,
+          43353
+        ],
+        "name": "Puffer",
+        "nameLocation": "132:6:18",
+        "scope": 43372,
+        "usedErrors": [
+          43352
+        ],
+        "usedEvents": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 18
+}
