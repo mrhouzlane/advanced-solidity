@@ -22,4 +22,3 @@ contract DexTwoTokenAttacker is ERC20 {
         transfer(_dexTwo, 100);
     }
 }
-
