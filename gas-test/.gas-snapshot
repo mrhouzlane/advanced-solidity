@@ -1,0 +1,5 @@
+CreationCodeExTest:testBorrowerIsSet() (gas: 9768)
+CreationCodeExTest:testGetCreationCode() (gas: 305781)
+StringStorageTest:testRevertUnusedGas() (gas: 6648)
+StringStorageTest:testStringStorage1() (gas: 13751)
+StringStorageTest:testStringStorage2() (gas: 23375)

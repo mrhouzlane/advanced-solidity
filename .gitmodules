@@ -31,3 +31,9 @@
 [submodule "yul-assembly/lib/solmate"]
 	path = yul-assembly/lib/solmate
 	url = https://github.com/transmissions11/solmate
+[submodule "ctfs/Mapping/lib/forge-std"]
+	path = ctfs/Mapping/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "gas-test/lib/forge-std"]
+	path = gas-test/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
