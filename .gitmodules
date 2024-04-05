@@ -49,3 +49,12 @@
 [submodule "gas-test/lib/openzeppelin-contracts"]
 	path = gas-test/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "damn-vulnerable-defi/lib/solady"]
+	path = damn-vulnerable-defi/lib/solady
+	url = https://github.com/vectorized/solady
+[submodule "damn-vulnerable-defi/lib/pm-contracts"]
+	path = damn-vulnerable-defi/lib/pm-contracts
+	url = https://github.com/gnosis/pm-contracts
+[submodule "damn-vulnerable-defi/lib/safe-smart-account"]
+	path = damn-vulnerable-defi/lib/safe-smart-account
+	url = https://github.com/safe-global/safe-smart-account
