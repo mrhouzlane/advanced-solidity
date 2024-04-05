@@ -1,5 +1,3 @@
-## Proxies 
-
 ### Challenges 
 
 #### Climber 

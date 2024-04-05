@@ -28,9 +28,9 @@ contract TokenVesting is Ownable {
 
     // Durations and timestamps are expressed in UNIX time, the same units as block.timestamp.
     // Modification - changed to uint48 to save gas
-    uint256 private _cliff; //@audit - gas optimisation - change to uint48 (millions of years in future)
-    uint256 private _start; //@audit - gas optimisation - change to uint48 (millions of years in future)
-    uint256 private _duration; // @audit - gas optimisation - change to uint48 (millions of years in future)
+    uint256 immutable private _cliff; //@audit - gas optimisation - change to uint48 (millions of years in future)
+    uint256 immutable private _start; //@audit - gas optimisation - change to uint48 (millions of years in future)
+    uint256 immutable private _duration; // @audit - gas optimisation - change to uint48 (millions of years in future)
 
     bool private _revocable;
 
@@ -50,13 +50,26 @@ contract TokenVesting is Ownable {
     constructor(
         address _owner,
         address beneficiary,
-        uint256 start,
-        uint256 cliffDuration,
-        uint256 duration,
+        uint48 start,
+        uint48 cliffDuration,
+        uint48 duration,
         bool revocable
     ) public Ownable(_owner) {
-        require(beneficiary != address(0), "TokenVesting: beneficiary is the zero address");
-        // solhint-disable-next-line max-line-length
+
+
+        //@audit -- gas optimization -- modify check for address(0) to use assembly
+        assembly {
+            if iszero(beneficiary) {
+                mstore(0x00, 0x20) // [data starts 32 bytes into memory]
+                mstore(0x20, 0x12) // hex(18) => len(Zero address check) in hex 
+                mstore(0x40, 0x7a65726f206164647265737320636865636b0000000000000000000000000000) // "Zero address check" padded to 32 bytes 
+                revert(0x00, 0x60)
+            }
+
+            require(beneficiary != address(0), "Zero address check");
+        }
+
+        // solhint-disable-next-line max-line-length  //@audit - not necessary ? 
         require(cliffDuration <= duration, "TokenVesting: cliff is longer than duration");
         require(duration > 0, "TokenVesting: duration is 0");
         // solhint-disable-next-line max-line-length
@@ -69,6 +82,7 @@ contract TokenVesting is Ownable {
         _start = start;
     }
 
+    @audit - Not necessary - can be removed
     /**
      * @return the beneficiary of the tokens.
      */
@@ -76,6 +90,7 @@ contract TokenVesting is Ownable {
         return _beneficiary;
     }
 
+    @audit - Not necessary - can be removed
     /**
      * @return the cliff time of the token vesting.
      */
@@ -146,7 +161,7 @@ contract TokenVesting is Ownable {
         uint256 balance = token.balanceOf(address(this));
 
         uint256 unreleased = _releasableAmount(token);
-        uint256 refund = balance - unreleased ; 
+        uint256 refund = balance - unreleased;
 
         _revoked[address(token)] = true;
 
@@ -178,8 +193,8 @@ contract TokenVesting is Ownable {
      * @dev Calculates the amount that has already vested but hasn't been released yet.
      * @param token ERC20 token which is being vested
      */
-    function _releasableAmount(IERC20 token) private view returns (uint256) {
-        return _vestedAmount(token) - _released[address(token)];
+    function _releasableAmount(IERC20 token) private view returns (uint256 amount) { //@audit - use a named return here 
+        return amount = _vestedAmount(token) - _released[address(token)];
     }
 
     /**
@@ -188,7 +203,7 @@ contract TokenVesting is Ownable {
      */
     function _vestedAmount(IERC20 token) private view returns (uint256) {
         uint256 currentBalance = token.balanceOf(address(this));
-        uint256 totalBalance = currentBalance + _released[address(token)]; 
+        uint256 totalBalance = currentBalance + _released[address(token)];
 
         if (block.timestamp < _cliff) {
             return 0;

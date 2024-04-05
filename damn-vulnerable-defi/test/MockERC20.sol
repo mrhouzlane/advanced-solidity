@@ -7,8 +7,9 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
  * @title MockERC20
  * @author Rhouzlane Mehdi
  */
+
 contract MockToken is ERC20 {
-     constructor() ERC20("ERC20Mock", "E20M") {}
+    constructor() ERC20("ERC20Mock", "E20M") {}
 
     function mint(address account, uint256 amount) external {
         _mint(account, amount);

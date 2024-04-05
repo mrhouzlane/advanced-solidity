@@ -6,15 +6,14 @@ import "../src/Preservation.sol";
 import "../src/PreservationAttacker.sol";
 
 contract PreservationTest is Test {
-
     PreservationAttacker public attacker;
     Preservation public preservation;
 
+    address public mehdi = makeAddr("mehdi");
 
     function setUp() public {
         attacker = new PreservationAttacker(address(preservation));
     }
-
 
     function testTakeOver() public {
         attacker.attack();

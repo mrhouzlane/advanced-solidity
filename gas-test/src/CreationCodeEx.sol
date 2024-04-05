@@ -7,14 +7,10 @@ contract CreationCodeEx {
     constructor(address _borrower) payable {
         borrower = _borrower;
     }
-
 }
 
 contract Ex {
-
     function get() external returns (bytes memory creationCode) {
         creationCode = type(CreationCodeEx).creationCode;
     }
-
 }
-

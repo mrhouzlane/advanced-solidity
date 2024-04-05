@@ -10,7 +10,6 @@ contract UnstoppableTest is Test {
     ReceiverUnstoppable receiver;
     UnstoppableVault pool;
     MockERC20 mockToken;
-    
 
     address owner = makeAddr("owner");
     address feeRecipient = makeAddr("feeRecipient");

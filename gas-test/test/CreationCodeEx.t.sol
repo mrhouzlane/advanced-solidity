@@ -22,5 +22,5 @@ contract CreationCodeExTest is Test {
         bytes memory creationCode = ex.get();
         CreationCodeEx cc2 = new CreationCodeEx(borrower);
         assertEq(creationCode, type(CreationCodeEx).creationCode);
-    }   
+    }
 }
